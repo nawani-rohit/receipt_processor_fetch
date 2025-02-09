@@ -1,5 +1,3 @@
-
-```markdown
 # Receipt Processor Challenge
 
 This repository contains my Python-Flask solution for a take-home exam from Fetch Rewards. The application processes receipts, calculates points based on a set of rules, and exposes two API endpoints. The project is containerized using Docker for easy deployment and testing.
@@ -152,34 +150,3 @@ Follow these steps to test the API endpoints using Postman:
      ```json
      { "points": 32 }
      ```
-
-## Notes
-
-- The application uses in-memory storage for receipts, so data will not persist across restarts.
-- The code is implemented using Python and Flask.
-- The Docker container simplifies deployment and testing.
-- For any issues or questions, please refer to this README or contact me.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-## Contact
-
-For further inquiries, please contact [Your Name] at [your.email@example.com].
-```
-
----
-
-### How to Customize
-
-- **Project Title & Description:**  
-  Modify the title, description, and contact information to match your details.
-
-- **API Details:**  
-  Update the sample JSON and responses as needed to reflect any changes in your implementation.
-
-- **Docker Commands:**  
-  Adjust the Docker instructions if your container configuration changes (e.g., if you decide to use a different port).
-
-This README file now incorporates all the provided information—from endpoints and points calculation rules to Docker build/run instructions—ensuring that reviewers and users have clear, step-by-step guidance on building, running, and testing your Receipt Processor Challenge application.
