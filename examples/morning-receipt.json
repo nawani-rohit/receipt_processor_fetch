@@ -1,0 +1,13 @@
+{
+    "retailer": "Aldi",
+    "purchaseDate": "2022-01-02",
+    "purchaseTime": "08:13",
+    "total": "35.00",
+    "items": [
+        {"shortDescription": "Milk", "price": "5.00"},
+        {"shortDescription": "Dasani", "price": "3.00"},
+        {"shortDescription": "Spinach Dip", "price": "12.00"},
+        {"shortDescription": "Curd", "price": "8.00"},
+        {"shortDescription": "Roti", "price": "7.00"}
+    ]
+}
