@@ -1,5 +1,3 @@
-
-```markdown
 # Receipt Processor Challenge
 
 This repository contains my Python-Flask solution for a take-home exam from Fetch Rewards. The application processes receipts, calculates points based on a set of rules, and exposes two API endpoints. The project is containerized using Docker for easy deployment and testing.
