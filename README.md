@@ -1,13 +1,13 @@
 # Receipt Processor Challenge
 
-This repository contains my Python-Flask solution for a take-home exam from Fetch Rewards. The application processes receipts, calculates points based on a set of rules, and exposes two API endpoints. The project is containerized using Docker for easy deployment and testing.
+This repository contains my Go solution for a take-home exam from Fetch Rewards. The application processes receipts, calculates points based on a set of rules, and exposes two API endpoints. The project is containerized using Docker for easy deployment and testing.
 
 ## API Endpoints
 
 ### POST `/receipts/process`
 
 - **Description:**  
-  Accepts a JSON receipt object, processes it, applies the point calculation rules, and returns a unique ID that represents the processed receipt.
+  Accepts a JSON receipt object, processes it by applying point calculation rules, and returns a unique ID representing the processed receipt.
 
 - **Request Payload:**  
   A JSON object representing the receipt. For example:
@@ -43,7 +43,7 @@ This repository contains my Python-Flask solution for a take-home exam from Fetc
 
 ## Points Calculation Rules
 
-The application calculates points using the following rules:
+The application calculates points based on the following rules:
 
 - **Retailer Name:**  
   1 point for every alphanumeric character in the retailer name.
@@ -51,7 +51,7 @@ The application calculates points using the following rules:
 - **Total Amount:**  
   - 50 points if the total is a round dollar amount (no cents).  
   - 25 points if the total is a multiple of 0.25.  
-  - 5 bonus points if the total is greater than 10.00 (if applicable).
+  - 5 bonus points if the total is greater than 10.00.
 
 - **Item Count:**  
   5 points for every two items on the receipt.
@@ -69,9 +69,17 @@ The application calculates points using the following rules:
 
 ```
 receipt-processor/
-├── app.py              # Main Flask application; contains the endpoints and points calculation logic.
-├── requirements.txt    # Lists Python dependencies (Flask, etc.)
+├── main.go             # Entry point; sets up the HTTP server and routes.
+├── handlers/
+│   └── receipts.go     # Contains HTTP handler functions for the API endpoints.
+├── models/
+│   └── receipt.go      # Defines the Receipt and Item structs.
+├── store/
+│   └── store.go        # Contains business logic (points calculation, validation) and in-memory storage.
+├── go.mod              # Go module file.
+├── go.sum              # Go module checksum file.
 ├── Dockerfile          # Dockerfile to build and run the application.
+├── api.yml             # OpenAPI specification for the API.
 └── README.md           # This file.
 ```
 
@@ -82,15 +90,15 @@ receipt-processor/
 From the root directory (where the Dockerfile is located), run:
 
 ```bash
-docker build -f Dockerfile -t receipt-processor .
+docker build -t receipt-processor .
 ```
 
 ### Run the Container
 
-Start the container by mapping the container's port 5000 to your host's port 5000:
+Start the container by mapping the container's port 8080 (or your configured port) to your host's port 8080:
 
 ```bash
-docker run -d -p 5000:5000 --name my-receipt-app receipt-processor
+docker run -d -p 8080:8080 --name my-receipt-app receipt-processor
 ```
 
 ### Verify the Container is Running
@@ -117,7 +125,7 @@ Follow these steps to test the API endpoints using Postman:
 
    - Open Postman and create a new **POST** request to:
      ```
-     http://localhost:5000/receipts/process
+     http://localhost:8080/receipts/process
      ```
    - In the **Body** tab, select **raw** and choose **JSON** as the type.
    - Paste a sample JSON receipt:
@@ -143,7 +151,7 @@ Follow these steps to test the API endpoints using Postman:
    - Copy the `id` from the POST response.
    - Create a new **GET** request to:
      ```
-     http://localhost:5000/receipts/<copied-id>/points
+     http://localhost:8080/receipts/<copied-id>/points
      ```
      Replace `<copied-id>` with the actual ID.
    - Click **Send**. You should receive a JSON response with the calculated points, for example:
