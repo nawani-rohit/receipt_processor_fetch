@@ -1,6 +1,6 @@
 # Receipt Processor Challenge
 
-This repository contains my Go solution for a take-home exam from Fetch Rewards. The application processes receipts, calculates points based on a set of rules, and exposes two API endpoints. The project is containerized using Docker for easy deployment and testing.
+This repository contains my Go solution for the Receipt Processor Challenge. The application processes receipts, calculates points based on a set of rules, and exposes two API endpoints. The project is containerized using Docker for easy deployment and testing.
 
 ## API Endpoints
 
@@ -69,18 +69,18 @@ The application calculates points based on the following rules:
 
 ```
 receipt-processor/
-├── main.go             # Entry point; sets up the HTTP server and routes.
+├── main.go             # Entry point; sets up the HTTP server and routes
 ├── handlers/
-│   └── receipts.go     # Contains HTTP handler functions for the API endpoints.
+│   └── receipts.go     # Contains HTTP handler functions for the API endpoints
 ├── models/
-│   └── receipt.go      # Defines the Receipt and Item structs.
+│   └── receipt.go      # Defines the Receipt and Item structs
 ├── store/
-│   └── store.go        # Contains business logic (points calculation, validation) and in-memory storage.
-├── go.mod              # Go module file.
-├── go.sum              # Go module checksum file.
-├── Dockerfile          # Dockerfile to build and run the application.
-├── api.yml             # OpenAPI specification for the API.
-└── README.md           # This file.
+│   └── store.go        # Contains business logic (points calculation, validation) and in-memory storage
+├── go.mod              # Go module file
+├── go.sum              # Go module checksum file
+├── Dockerfile          # Dockerfile to build and run the application
+├── api.yml             # OpenAPI specification for the API
+└── README.md           
 ```
 
 ## Docker Instructions
